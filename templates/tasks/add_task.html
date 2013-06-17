@@ -1,0 +1,56 @@
+<head>
+<title>Manager Dashboard</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<style>
+body{
+	font-family:Arial,Helvetica,sans-serif;
+	font-size: 12px;
+}
+</style>
+
+<script type="text/javascript">window.__admin_media_prefix__ = "/static/admin/";</script>
+
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css"/>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/widgets.css"/>
+
+{{ form.media }}
+
+
+
+
+</head>
+<body>
+    <h1> New Task Dashboard </h1><br />
+<a href="{% url 'Home:project_detail' slug=project.slug %}"> back  </a>||
+<a href="{% url 'Login:logout' %}"> logout </a>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %} 
+<form action= "{% url 'Task:add_task' slug=project.slug%}" method="post">
+            {% csrf_token %}
+<table>
+            {% for each_field in form %}   
+                <tr>
+                    <td>{{each_field.label}}</td>
+                    <td>{{each_field}}</td>
+                </tr>
+                <tr>
+                    <td>{{each_field.helptext}}</td>
+                    <td>{{each_field.error}}</td>
+                </tr>   
+            {% endfor %}
+</table>
+<input type="submit" value="Submit Form">
+             </form> 
+
+</body>
+
+</html>

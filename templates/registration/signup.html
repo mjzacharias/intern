@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>User SignUp</title>
+        
+        </form>     
+    <head>
+    <body>
+        <a href="{% url 'Login:login' %}">back</a>
+        <form action= " {% url 'Registration:register' %}" method="post">
+            {% csrf_token %}
+            <table>
+            {% for each_field in form %}   
+                <tr>
+                    <td>{{each_field.label}}</td>
+                    <td>{{each_field}}</td>
+                    <td>{{each_field.errors}}</td>
+                </tr>   
+            {% endfor %}
+        </table>         
+            <input type="submit" value="Submit Form">
+        
+    </body>
+<html1>
