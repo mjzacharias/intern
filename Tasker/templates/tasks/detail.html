@@ -1,0 +1,15 @@
+<h1>{{ task.name }}</h1>
+<h2>{{task.priority}}</h2>
+
+{% if error_message %}
+	<p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+{{task.description}}
+
+{{task.end_date}}
+
+{{task.project}}
+
+<input type="submit" value="Postpone" />
+</form>
